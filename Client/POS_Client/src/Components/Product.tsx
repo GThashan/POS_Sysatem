@@ -1,5 +1,11 @@
+import ProductForm from "./Product/productform";
+
 function Product(){
-    return <h1>Product</h1>
+    return (
+        <>
+        <ProductForm/>
+        </>
+    )
 }
 
 export default Product;
