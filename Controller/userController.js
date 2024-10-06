@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt'
-import userSchema from '../Models/userSchema';
+import User from '../Models/userSchema.js';
 
 export const register = async(req,res)=>{
     try {
@@ -13,7 +13,7 @@ export const register = async(req,res)=>{
 
      const hashPassword = await bcrypt.hash(password, 10);
 
-    const user = new userSchema({
+    const user = new User({
         fullname,
         email,
         password : hashPassword,
