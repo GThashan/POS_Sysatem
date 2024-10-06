@@ -27,6 +27,27 @@ export const createProduct= async(req,res)=>{
     
 }
 export const findByIdProduct = async(req,res)=>{
+    try {
+        const id  = req.params.id;
+
+        
+        const existingProduct = await productSchema.findById({'_id':id});
+
+        if (!existingProduct) {
+            return res.status(404).json({ success: false, message: "Products not found" });
+        }
+
+      
+        return res.status(200).json({ 
+            success: true, 
+            message: "Here are the product details", 
+            product: existingProduct 
+        });
+
+    } catch (error) {
+        
+        return res.status(500).json({ success: false, message: "Server error", error: error.message });
+    }
 
 }
 export const updateProduct = async(req,res)=>{

@@ -24,6 +24,27 @@ export const createOrder= async(req,res)=>{
     
 }
 export const findByIdOrder = async(req,res)=>{
+    try {
+        const id  = req.params.id;
+
+        
+        const existingOrder = await orderSchema.findById({'_id':id});
+
+        if (!existingOrder) {
+            return res.status(404).json({ success: false, message: "Order not available" });
+        }
+
+      
+        return res.status(200).json({ 
+            success: true, 
+            message: "Here are the Order details", 
+            order: existingOrder 
+        });
+
+    } catch (error) {
+        
+        return res.status(500).json({ success: false, message: "Server error", error: error.message });
+    }
 
 }
 export const updateOrder = async(req,res)=>{

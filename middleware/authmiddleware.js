@@ -6,8 +6,8 @@ dotenv.config();
 export const authMiddleware = (req, res, next) => {
   try {
  
-    // const token = req.header('Authorization')?.replace('Bearer ', '');
-    const token = req.header.authorization;
+    const token = req.header('Authorization')?.replace('Bearer ', '');
+    // const token = req.header.authorization;
 
     if (!token) {
       return res.status(401).json({ success: false, message: 'Access denied. No token provided.' });
