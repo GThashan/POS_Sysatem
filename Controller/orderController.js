@@ -48,11 +48,71 @@ export const findByIdOrder = async(req,res)=>{
 
 }
 export const updateOrder = async(req,res)=>{
+    try {
+        const id  = req.params.id;
+        const { date, customerdetails, totalcost, products } = req.body;
+
+
+        const updatedOrder = await orderSchema.findByIdAndUpdate(
+            id,
+            { date, customerdetails, totalcost, products},
+            { new: true, runValidators: true } 
+        );
+
+        if (!updatedOrder) {
+            return res.status(404).json({ success: false, message: "Order not found" });
+        }
+
+        return res.status(200).json({
+            success: true,
+            message: "Order updated successfully",
+            Order: updatedOrder,
+        });
+    } catch (error) {
+        return res.status(500).json({ success: false, message: "Server error", error: error.message });
+    }
+
 
 }
 export const deleteByIdOrder = async(req,res)=>{
+    try {
+        const id  = req.params.id;
+
+        
+
+        const deletedOrder = await orderSchema.findByIdAndDelete(id);
+
+        if (!deletedOrder) {
+            return res.status(404).json({ success: false, message: "Order not found" });
+        }
+
+        return res.status(200).json({
+            success: true,
+            message: "Order deleted successfully",
+        });
+    } catch (error) {
+        return res.status(500).json({ success: false, message: "Server error", error: error.message });
+    }
+
 
 }
 export const findAllOrder = async(req,res)=>{
+    try {
+        const orders = await orderSchema.find(); 
+        
+        if (!orders.length) {
+            return res.status(404).json({ success: false, message: "No orders found" });
+        }
+
+        return res.status(200).json({
+            success: true,
+            message: "Here are all the orders",
+            orders: orders
+        });
+
+    } catch (error) {
+        return res.status(500).json({ success: false, message: "Server error", error: error.message });
+    }
+
 
 }
