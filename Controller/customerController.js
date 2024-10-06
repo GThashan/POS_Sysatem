@@ -1,4 +1,4 @@
-import customerSchema from "../Models/customerSchema"
+import customerSchema from "../Models/customerSchema.js"
 
 export const createCustomer = async(req,res)=>{
     
