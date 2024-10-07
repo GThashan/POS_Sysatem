@@ -1,5 +1,14 @@
+import OrderForm from "./Order/OrderForm";
+import Ordertable from "./Order/Ordertable";
+
+
 function Order(){
-    return <h1>Order</h1>
-}
+    return (
+        <>
+        <OrderForm/>
+        <Ordertable/>
+        </>
+    )
+};
 
 export default Order;

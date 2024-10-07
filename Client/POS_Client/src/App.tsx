@@ -2,13 +2,16 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./Components/Home"
 import Customer from "./Components/Customer";
 import Product from "./Components/Product";
+import Order from "./Components/Order";
+import Login from "./Components/login";
+import SignUp from "./Components/signUp";
 
 function App() {
 
 
   return (
     <Router>
-  <div className="bg-[#191919] text-white p-4">
+  <div className="bg-[#2d1e1e] text-white p-4">
   <nav className="bg-white shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
@@ -30,6 +33,12 @@ function App() {
             </Link>
             <Link to="/product" className="text-gray-700 hover:text-[#9f7425] font-medium">
               Products
+            </Link>
+            <Link to="/order" className="text-gray-700 hover:text-[#9f7425] font-medium">
+              Order Manage
+            </Link>
+            <Link to="/login" className="text-gray-700 hover:text-[#9f7425] font-medium">
+              Login
             </Link>
           </div>
 
@@ -60,6 +69,9 @@ function App() {
         <Route path="/" element={<Home/>}/>
         <Route path="/customer" element={<Customer/>}/>
         <Route path="/product" element={<Product/>}/>
+        <Route path="/order"   element={<Order/>}/>
+        <Route path="/login"   element={<Login/>}/>
+        <Route path="/signUp"   element={<SignUp/>}/>
       </Routes>
     
   </div>

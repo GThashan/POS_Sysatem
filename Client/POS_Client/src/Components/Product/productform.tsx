@@ -90,7 +90,9 @@ function ProductForm() {
             />
           </div>
 
-          <div className="mb-4">
+          
+        </div>
+        <div className="mb-4">
             <label htmlFor="productDescription" className="block text-white font-medium mb-2">
               Product Description
             </label>
@@ -102,7 +104,6 @@ function ProductForm() {
               placeholder="Enter product description"
             />
           </div>
-        </div>
 
         <button
           type="submit"
